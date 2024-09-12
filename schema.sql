@@ -23,3 +23,11 @@ total_claim_cost FLOAT,
 payer_coverage FLOAT,
 reason_code VARCHAR(100)
 );
+
+CREATE TABLE immunisations(
+date TIMESTAMP,
+patient VARCHAR(100),
+encounter VARCHAR(100),
+code BIGINT,
+description VARCHAR(500)
+);
