@@ -38,3 +38,15 @@ def load_data_to_db(table_name, data_file, conn):
 
     finally:
         curs.close()
+
+
+def main():
+    conn = get_connection()
+
+    load_data_to_db('conditions', 'conditions.txt', conn)
+    load_data_to_db(
+        'encounters', '/Users/joel/Documents/portfolio/encounters.txt', conn)
+    load_data_to_db('immunisations', 'immunisations.txt', conn)
+    load_data_to_db('patients', 'patients.txt', conn)
+
+    conn.close()
