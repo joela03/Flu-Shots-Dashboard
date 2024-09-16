@@ -13,6 +13,11 @@ SELECT pat.birthdate
 	  ,pat.id
 	  ,pat.first
 	  ,pat.last
+      ,flu.earliest_flu_shot_2022
+      ,flu.patient
+      ,CASE WHEN flu.patient IS NOT null THEN 1
+      ELSE 0
+      END AS flu_shot_2022
 FROM patients AS pat
 LEFT JOIN flu_shot_2022 AS flu
-    on pat.id = flu.patient
+    ON pat.id = flu.patient
