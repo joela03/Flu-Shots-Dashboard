@@ -13,6 +13,11 @@ def get_connection():
     return conn
 
 
+def get_cursor(connection: psycopg2.extensions.connection) -> psycopg2.extensions.cursor:
+    """Sets up cursor"""
+    return connection.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+
+
 def load_data_to_db(table_name, data_file, conn):
     """Loads data into the database"""
 
