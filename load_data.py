@@ -41,6 +41,7 @@ def load_data_to_db(table_name, data_file, conn):
 
 
 def main():
+    """Main function"""
     conn = get_connection()
 
     load_data_to_db('conditions', 'conditions.txt', conn)
@@ -50,3 +51,7 @@ def main():
     load_data_to_db('patients', 'patients.txt', conn)
 
     conn.close()
+
+
+if __name__ == '__main__':
+    main()
