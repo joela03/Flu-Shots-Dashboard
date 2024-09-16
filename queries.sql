@@ -31,6 +31,7 @@ SELECT pat.birthdate
       ,CASE WHEN flu.patient IS NOT null THEN 1
       ELSE 0
       END AS flu_shot_2022
+      ,EXTRACT(year FROM age('2022-12-31', pat.birthdate)) AS age 
 FROM patients AS pat
 LEFT JOIN flu_shot_2022 AS flu
     ON pat.id = flu.patient
