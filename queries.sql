@@ -2,13 +2,13 @@
 
 WITH active_patients AS
 (
-SELECT patient
+SELECT DISTINCT(patient)
 FROM encounters as e
 JOIN patients as pat
 ON e.patient = pat.id
 WHERE start BETWEEN '2022-01-1 00:00' AND '2022-12-31 23:59'
 AND pat.deathdate IS NULL
-AND EXTRACT(MONTH FROM age('2022-12-31', pat.birthdate)) >= 6
+AND EXTRACT(month FROM age('2022-12-31', pat.birthdate)) >= 6
 ),
 
 flu_shot_2022 AS
