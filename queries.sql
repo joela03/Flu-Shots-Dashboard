@@ -19,6 +19,7 @@ WHERE code = '5302'
 	AND date BETWEEN '2022-01-1 00:00' AND '2022-12-31 23:59'
 GROUP BY patient
 )
+
 SELECT pat.birthdate
 	  ,pat.race
 	  ,pat.county
@@ -33,4 +34,5 @@ SELECT pat.birthdate
 FROM patients AS pat
 LEFT JOIN flu_shot_2022 AS flu
     ON pat.id = flu.patient
-
+WHERE 1=1
+    AND pat.id in (SELECT patient FROM active_patients)
