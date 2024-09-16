@@ -1,10 +1,15 @@
+DROP TABLE conditions;
+DROP TABLE encounters;
+DROP TABLE immunisations;
+DROP TABLE patients;
+
 CREATE TABLE conditions(
 start DATE,
 stop DATE,
 patient VARCHAR(1000),
 encounter VARCHAR(1000),
 code VARCHAR(1000),
-description VARCHAR(200),
+description VARCHAR(200)
 );
 
 CREATE TABLE encounters(
