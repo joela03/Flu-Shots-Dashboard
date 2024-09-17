@@ -12,6 +12,13 @@ The Flu Shots Dashboard is built using Tableau and showcases data in a user-frie
 - **Demographic Breakdown**: Explore vaccination rates by age, gender, and region.
 - **Data Insights**: Gain insights into flu shot uptake and related factors.
 
+## Query Explanation: Filtering Active Patients and Excluding Patients Under 6 Months
+
+This query selects data for **active patients** who:
+1. Have visited the hospital at least once in the year 2022.
+2. Have received a flu vaccine (with the code `5302`).
+3. Excludes patients who are under 6 months of age by the end of 2022 (since they are required to receive the vaccine by mandate).
+
 ## Contributing
 
 Contributions are welcome! If you'd like to contribute to this project, please fork the repository and submit a pull request. For any issues or suggestions, feel free to open an issue in the GitHub repository.
