@@ -31,6 +31,13 @@ This query selects data for **active patients** who:
      AND pat.deathdate IS NULL
      ```
 
+2. **Excluding Patients Under 6 Months:**
+   - To exclude patients who are under 6 months old by the end of 2022, the query uses the following condition:
+     ```sql
+     AND EXTRACT(month FROM age('2022-12-31', pat.birthdate)) >= 6
+     ```
+   - This line calculates the patient’s age in **months** as of December 31, 2022, and only includes those who are **6 months or older** in the `active_patients` CTE. This ensures that infants below 6 months are excluded, since they are mandated to receive the flu vaccine.
+
 ## Contributing
 
 Contributions are welcome! If you'd like to contribute to this project, please fork the repository and submit a pull request. For any issues or suggestions, feel free to open an issue in the GitHub repository.
