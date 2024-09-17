@@ -38,6 +38,16 @@ This query selects data for **active patients** who:
      ```
    - This line calculates the patient’s age in **months** as of December 31, 2022, and only includes those who are **6 months or older** in the `active_patients` CTE. This ensures that infants below 6 months are excluded, since they are mandated to receive the flu vaccine.
 
+3. **Identifying Flu Vaccinated Patients:**
+   - The `flu_shot_2022` CTE retrieves patients who received the flu vaccine with code `5302` during 2022. It also captures the date of the earliest flu shot for each patient:
+     ```sql
+     SELECT patient, MIN(date) AS earliest_flu_shot_2022
+     FROM immunisations
+     WHERE code = '5302'
+     AND date BETWEEN '2022-01-1 00:00' AND '2022-12-31 23:59'
+     GROUP BY patient
+     ```
+
 ## Contributing
 
 Contributions are welcome! If you'd like to contribute to this project, please fork the repository and submit a pull request. For any issues or suggestions, feel free to open an issue in the GitHub repository.
