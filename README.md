@@ -19,6 +19,18 @@ This query selects data for **active patients** who:
 2. Have received a flu vaccine (with the code `5302`).
 3. Excludes patients who are under 6 months of age by the end of 2022 (since they are required to receive the vaccine by mandate).
 
+### Key Steps in Filtering
+
+1. **Filtering Active Patients:**
+   - The `active_patients` Common Table Expression (CTE) identifies patients who had a hospital **encounter** (visit) in the year 2022. This is achieved by joining the `encounters` and `patients` tables, and filtering based on the encounter start date:
+     ```sql
+     WHERE start BETWEEN '2022-01-1 00:00' AND '2022-12-31 23:59'
+     ```
+   - It also ensures that the patient is still alive by checking:
+     ```sql
+     AND pat.deathdate IS NULL
+     ```
+
 ## Contributing
 
 Contributions are welcome! If you'd like to contribute to this project, please fork the repository and submit a pull request. For any issues or suggestions, feel free to open an issue in the GitHub repository.
