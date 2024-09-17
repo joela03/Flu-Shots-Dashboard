@@ -48,6 +48,18 @@ This query selects data for **active patients** who:
      GROUP BY patient
      ```
 
+4. **Combining the Data:**
+   - In the main query, patients from the `patients` table are **left joined** with the `flu_shot_2022` data, ensuring that all active patients are included even if they didn't receive a flu shot. The query uses a `CASE` statement to assign a `1` if the patient received a flu vaccine and `0` if they did not:
+     ```sql
+     CASE WHEN flu.patient IS NOT null THEN 1
+     ELSE 0
+     END AS flu_shot_2022
+     ```
+
+### Summary
+
+The query efficiently filters for active patients who visited the hospital in 2022, ensuring that only those who are 6 months or older are included. It also tracks whether each patient received a flu shot, while excluding those mandated to receive the vaccine due to age.
+
 ## Contributing
 
 Contributions are welcome! If you'd like to contribute to this project, please fork the repository and submit a pull request. For any issues or suggestions, feel free to open an issue in the GitHub repository.
